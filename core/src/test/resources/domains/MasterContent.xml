@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
 <dataset>
   <SyncopeDomain id="Two" adminCipherAlgorithm="SHA" adminPwd="2AA60A8FF7FCD473D321E0146AFD9E26DF395147"/>  
   
@@ -1263,6 +1245,9 @@ $$ }&#10;
 $$ }&#10;
 &lt;/body&gt;
 &lt;/html&gt;"/>
+  <MailTemplate id="usernameReminder"
+                htmlTemplate="&lt;html&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    Hi ${user.plainAttrMap[&quot;firstname&quot;].values[0]} ${user.plainAttrMap[&quot;surname&quot;].values[0]}, &lt;br/&gt;&#13;&#10;&#9;your registered username is&#13;&#10;&#13;&#10;    &lt;h3&gt;${user.username}&lt;/h3&gt;&#13;&#10;&#13;&#10;&#9;Best regards.&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;"
+                textTemplate="Hi ${user.plainAttrMap[&quot;firstname&quot;].values[0]} ${user.plainAttrMap[&quot;surname&quot;].values[0]}, &#13;&#10;your registered username is&#13;&#10;&#13;&#10;  ${user.username}&#13;&#10;&#13;&#10;Best regards."/>
 
   <Notification id="e00945b5-1184-4d43-8e45-4318a8dcdfd4" active="1" recipientAttrName="email" selfAsRecipient="1" 
                 sender="admin@syncope.apache.org" subject="Password Reset request" template_id="requestPasswordReset" 
@@ -1286,6 +1271,13 @@ $$ }&#10;
   <AnyAbout id="2e2ee845-2abf-43c6-b543-49243a84e2f1" anyType_id="USER" notification_id="9e2b911c-25de-4c77-bcea-b86ed9451050" filter="fullname==*o*;fullname==*i*"/>
   <Notification_events notification_id="9e2b911c-25de-4c77-bcea-b86ed9451050" event="[CUSTOM]:[]:[]:[unexisting1]:[FAILURE]"/>
   <Notification_events notification_id="9e2b911c-25de-4c77-bcea-b86ed9451050" event="[CUSTOM]:[]:[]:[unexisting2]:[SUCCESS]"/>
+
+  <Notification id="270ccdef-434b-41d4-8ccd-ef434ba1d420" active="1" recipientAttrName="email" selfAsRecipient="1"
+                sender="no-reply@tirasa.net" subject="Username reminder"
+                traceLevel="ALL" template_id="usernameReminder"/>
+  <AnyAbout id="d50f4903-43f5-4d16-8f49-0343f5ad16d1" filter="email!=$null"
+            notification_id="270ccdef-434b-41d4-8ccd-ef434ba1d420" anyType_id="USER"/>
+  <Notification_events notification_id="270ccdef-434b-41d4-8ccd-ef434ba1d420" event="[CUSTOM]:[]:[]:[remindUsername]:[SUCCESS]"/>
 
   <ReportTemplate id="empty"/>  
   <ReportTemplate id="sample"

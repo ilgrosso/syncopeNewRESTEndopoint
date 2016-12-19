@@ -3,3 +3,9 @@
 /core/target/
 /console/target/
 /enduser/target/
+/ext/target/
+/ext/reminder/target/
+/ext/reminder/logic/target/
+/ext/reminder/target/
+/ext/reminder/rest-api/target/
+/ext/reminder/rest-cxf/target/

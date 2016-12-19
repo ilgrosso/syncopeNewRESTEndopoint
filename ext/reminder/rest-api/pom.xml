@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.tirasa.blog.ilgrosso.ext</groupId>
+    <artifactId>syncope-ext-reminder</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <name>Apache Syncope: new REST endpoint - Ext: Reminder REST API</name>
+  <groupId>net.tirasa.blog.ilgrosso.ext.reminder</groupId>
+  <artifactId>syncope-ext-reminder-rest-api</artifactId>
+  <packaging>jar</packaging>
+  
+  <properties>
+    <rootpom.basedir>${basedir}/../../..</rootpom.basedir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.syncope.common</groupId>
+      <artifactId>syncope-common-rest-api</artifactId>
+      <version>${syncope.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Generating javadoc JAR artifact for usage with CXF's WADL generator (for core) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <inherited>true</inherited>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

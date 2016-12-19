@@ -91,6 +91,7 @@
     <module>core</module>
     <module>console</module>
     <module>enduser</module>
+    <module>ext</module>
   </modules>
 
 </project>
